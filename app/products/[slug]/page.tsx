@@ -1,0 +1,238 @@
+"use client"
+
+import { useState } from "react"
+import Navigation from "@/components/navigation"
+import Footer from "@/components/footer"
+import { MessageCircle, Check } from "lucide-react"
+
+const productDetails: Record<string, any> = {
+  "oversized-tshirt": {
+    name: "Oversized T-Shirt",
+    price: "Custom Quote",
+    description: "Premium comfort with a modern oversized fit. Perfect for casual wear and custom printing.",
+    fullDescription:
+      "Our oversized t-shirts are crafted from premium 100% cotton fabric, offering exceptional comfort and durability. The relaxed fit makes them perfect for casual wear, while the quality construction ensures they maintain their shape wash after wash.",
+    image: "/oversized-tshirt.png",
+    sizes: ["XS", "S", "M", "L", "XL", "XXL", "3XL"],
+    colors: ["Black", "White", "Navy", "Gray", "Charcoal", "Olive"],
+    specs: {
+      Material: "100% Premium Cotton",
+      Weight: "180 GSM",
+      Fit: "Oversized",
+      Care: "Machine wash cold, tumble dry low",
+    },
+  },
+  "acid-wash-tshirt": {
+    name: "Acid Wash T-Shirt",
+    price: "Custom Quote",
+    description: "Trendy acid-washed design with vintage appeal. Ideal for fashion-forward collections.",
+    fullDescription:
+      "Featuring a unique acid-wash treatment, these t-shirts combine vintage aesthetics with modern comfort. Each piece has a distinctive pattern, making them perfect for brands looking to stand out.",
+    image: "/acid-wash-tshirt.jpg",
+    sizes: ["XS", "S", "M", "L", "XL", "XXL"],
+    colors: ["Black Acid", "Blue Acid", "Purple Acid", "Gray Acid"],
+    specs: {
+      Material: "100% Cotton with Acid Wash",
+      Weight: "175 GSM",
+      Fit: "Regular",
+      Care: "Wash separately, cold water recommended",
+    },
+  },
+  hoodie: {
+    name: "Hoodie",
+    price: "Custom Quote",
+    description: "Cozy and stylish hoodie perfect for branding and custom designs. Premium fabric quality.",
+    fullDescription:
+      "Our premium hoodies are designed for comfort and style. Made from high-quality fleece, they feature a spacious kangaroo pocket and adjustable drawstrings, perfect for custom embroidery or printing.",
+    image: "/cozy-hoodie.png",
+    sizes: ["XS", "S", "M", "L", "XL", "XXL", "3XL"],
+    colors: ["Black", "White", "Navy", "Gray", "Charcoal", "Burgundy"],
+    specs: {
+      Material: "80% Cotton, 20% Polyester Fleece",
+      Weight: "280 GSM",
+      Features: "Kangaroo pocket, adjustable drawstrings",
+      Care: "Machine wash warm, tumble dry medium",
+    },
+  },
+  sweatshirt: {
+    name: "Sweatshirt",
+    price: "Custom Quote",
+    description: "Classic sweatshirt with excellent durability. Great for embroidery and printing.",
+    fullDescription:
+      "A timeless classic, our sweatshirts are perfect for any season. Made from premium fleece material, they offer excellent durability and are ideal for custom branding.",
+    image: "/cozy-sweatshirt.png",
+    sizes: ["XS", "S", "M", "L", "XL", "XXL"],
+    colors: ["Black", "White", "Navy", "Gray", "Heather Gray"],
+    specs: {
+      Material: "80% Cotton, 20% Polyester",
+      Weight: "260 GSM",
+      Fit: "Regular",
+      Care: "Machine wash warm, tumble dry medium",
+    },
+  },
+  "oversized-hoodie": {
+    name: "Oversized Hoodie",
+    price: "Custom Quote",
+    description: "Luxurious oversized hoodie for maximum comfort. Premium material and construction.",
+    fullDescription:
+      "Experience ultimate comfort with our oversized hoodie. The relaxed fit and premium fleece material make it perfect for loungewear or casual outings. Ideal for custom designs and branding.",
+    image: "/oversized-hoodie.png",
+    sizes: ["S", "M", "L", "XL", "XXL", "3XL", "4XL"],
+    colors: ["Black", "White", "Navy", "Gray", "Charcoal", "Sage"],
+    specs: {
+      Material: "85% Cotton, 15% Polyester Fleece",
+      Weight: "300 GSM",
+      Fit: "Oversized",
+      Care: "Machine wash warm, tumble dry low",
+    },
+  },
+  "premium-polo": {
+    name: "Premium Polo",
+    price: "Custom Quote",
+    description: "Elegant polo shirt for professional and casual settings. Perfect for corporate branding.",
+    fullDescription:
+      "Our premium polo shirts combine elegance with comfort. Made from high-quality pique cotton, they are perfect for corporate events, team uniforms, or casual professional wear.",
+    image: "/premium-polo-shirt.png",
+    sizes: ["XS", "S", "M", "L", "XL", "XXL"],
+    colors: ["Black", "White", "Navy", "Red", "Green", "Gray"],
+    specs: {
+      Material: "100% Pique Cotton",
+      Weight: "200 GSM",
+      Features: "Collar, button placket",
+      Care: "Machine wash warm, tumble dry medium",
+    },
+  },
+}
+
+export default function ProductDetailPage({ params }: { params: { slug: string } }) {
+  const product = productDetails[params.slug]
+  const [selectedSize, setSelectedSize] = useState(product?.sizes[0])
+  const [selectedColor, setSelectedColor] = useState(product?.colors[0])
+
+  if (!product) {
+    return (
+      <main className="min-h-screen bg-background">
+        <Navigation />
+        <div className="py-20 text-center">
+          <h1 className="text-3xl font-bold text-foreground">Product not found</h1>
+        </div>
+        <Footer />
+      </main>
+    )
+  }
+
+  const whatsappMessage = `Hi! I'm interested in ordering ${product.name} in ${selectedColor}, size ${selectedSize}. Could you provide more details and pricing?`
+  const whatsappLink = `https://wa.me/919876543210?text=${encodeURIComponent(whatsappMessage)}`
+
+  return (
+    <main className="min-h-screen bg-background">
+      <Navigation />
+
+      <section className="py-12 bg-gradient-to-br from-background via-background to-muted">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid md:grid-cols-2 gap-12 items-start">
+            {/* Product Image */}
+            <div className="animate-slide-in-left">
+              <div className="relative rounded-xl overflow-hidden shadow-2xl">
+                <img src={product.image || "/placeholder.svg"} alt={product.name} className="w-full h-auto" />
+              </div>
+            </div>
+
+            {/* Product Details */}
+            <div className="animate-slide-in-right">
+              <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-4">{product.name}</h1>
+              <p className="text-lg text-muted-foreground mb-6">{product.fullDescription}</p>
+
+              {/* Size Selection */}
+              <div className="mb-8">
+                <label className="block text-sm font-semibold text-foreground mb-3">Select Size</label>
+                <div className="flex flex-wrap gap-2">
+                  {product.sizes.map((size: string) => (
+                    <button
+                      key={size}
+                      onClick={() => setSelectedSize(size)}
+                      className={`px-4 py-2 rounded-lg border-2 transition-all ${
+                        selectedSize === size
+                          ? "border-primary bg-primary text-primary-foreground"
+                          : "border-border text-foreground hover:border-primary"
+                      }`}
+                    >
+                      {size}
+                    </button>
+                  ))}
+                </div>
+              </div>
+
+              {/* Color Selection */}
+              <div className="mb-8">
+                <label className="block text-sm font-semibold text-foreground mb-3">Select Color</label>
+                <div className="flex flex-wrap gap-3">
+                  {product.colors.map((color: string) => (
+                    <button
+                      key={color}
+                      onClick={() => setSelectedColor(color)}
+                      className={`px-4 py-2 rounded-lg border-2 transition-all ${
+                        selectedColor === color ? "border-primary bg-primary/10" : "border-border hover:border-primary"
+                      }`}
+                    >
+                      {color}
+                    </button>
+                  ))}
+                </div>
+              </div>
+
+              {/* Specifications */}
+              <div className="mb-8 p-6 bg-card rounded-lg border border-border">
+                <h3 className="text-lg font-semibold text-foreground mb-4">Specifications</h3>
+                <div className="space-y-3">
+                  {Object.entries(product.specs).map(([key, value]) => (
+                    <div key={key} className="flex justify-between">
+                      <span className="text-muted-foreground">{key}</span>
+                      <span className="font-semibold text-foreground">{value}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* Order Button */}
+              <a
+                href={whatsappLink}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-full inline-flex items-center justify-center px-8 py-4 bg-primary text-primary-foreground rounded-lg font-semibold hover:bg-primary/90 transition-all hover:shadow-lg gap-2"
+              >
+                <MessageCircle size={20} />
+                Order on WhatsApp
+              </a>
+
+              {/* Features */}
+              <div className="mt-8 p-6 bg-muted/50 rounded-lg">
+                <h3 className="font-semibold text-foreground mb-4">Why Choose This Product?</h3>
+                <ul className="space-y-2">
+                  <li className="flex items-center gap-2 text-muted-foreground">
+                    <Check size={18} className="text-primary" />
+                    Premium quality materials
+                  </li>
+                  <li className="flex items-center gap-2 text-muted-foreground">
+                    <Check size={18} className="text-primary" />
+                    Perfect for custom printing & embroidery
+                  </li>
+                  <li className="flex items-center gap-2 text-muted-foreground">
+                    <Check size={18} className="text-primary" />
+                    Wholesale pricing available
+                  </li>
+                  <li className="flex items-center gap-2 text-muted-foreground">
+                    <Check size={18} className="text-primary" />
+                    Fast delivery to your location
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <Footer />
+    </main>
+  )
+}
