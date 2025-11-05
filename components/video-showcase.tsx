@@ -1,7 +1,7 @@
 "use client"
 
 import { Play } from "lucide-react"
-import { useState } from "react"
+import React, { useState, useRef, useEffect } from "react"
 
 const videos = [
   {
@@ -26,24 +26,43 @@ const videos = [
 
 export default function VideoShowcase() {
   const [selectedVideo, setSelectedVideo] = useState<number | null>(null)
+  const scrollRef = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    const scrollContainer = scrollRef.current
+    if (!scrollContainer) return
+
+    const scrollSpeed = 1 // Adjust scroll speed as needed
+    const scrollInterval = 50 // Milliseconds per scroll step
+
+    const autoScroll = setInterval(() => {
+      if (scrollContainer.scrollLeft + scrollContainer.clientWidth >= scrollContainer.scrollWidth) {
+        scrollContainer.scrollLeft = 0 // Reset to beginning
+      } else {
+        scrollContainer.scrollLeft += scrollSpeed
+      }
+    }, scrollInterval)
+
+    return () => clearInterval(autoScroll)
+  }, [])
 
   return (
     <section className="py-20 bg-background">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16 animate-fade-in-up">
           <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
-            See Our <span className="text-primary">Craftsmanship</span>
+            See Our <span className="text-primary">Reels</span>
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
             Watch our production process and quality standards in action
           </p>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-8">
+        <div className="flex overflow-x-auto gap-6 py-4 scrollbar-hide" ref={scrollRef}>
           {videos.map((video, index) => (
             <div
               key={video.id}
-              className="group cursor-pointer animate-scale-in"
+              className="flex-none w-48 group cursor-pointer animate-scale-in"
               style={{ animationDelay: `${index * 0.1}s` }}
               onClick={() => setSelectedVideo(video.id)}
             >
@@ -51,15 +70,15 @@ export default function VideoShowcase() {
                 <img
                   src={video.thumbnail || "/placeholder.svg"}
                   alt={video.title}
-                  className="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-300"
+                  className="w-full h-72 object-cover group-hover:scale-110 transition-transform duration-300"
                 />
                 <div className="absolute inset-0 bg-black/40 group-hover:bg-black/50 transition-colors flex items-center justify-center">
-                  <div className="w-16 h-16 bg-accent rounded-full flex items-center justify-center group-hover:scale-110 transition-transform">
-                    <Play size={32} className="text-accent-foreground fill-accent-foreground" />
+                  <div className="w-14 h-14 bg-accent rounded-full flex items-center justify-center group-hover:scale-110 transition-transform">
+                    <Play size={28} className="text-accent-foreground fill-accent-foreground" />
                   </div>
                 </div>
               </div>
-              <h3 className="mt-4 text-lg font-semibold text-foreground group-hover:text-primary transition-colors">
+              <h3 className="mt-3 text-base font-semibold text-foreground group-hover:text-primary transition-colors">
                 {video.title}
               </h3>
             </div>

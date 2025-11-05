@@ -3,6 +3,7 @@
 import { useState } from "react"
 import Link from "next/link"
 import { Menu, X } from "lucide-react"
+import Image from "next/image"
 
 export default function Navigation() {
   const [isOpen, setIsOpen] = useState(false)
@@ -13,10 +14,8 @@ export default function Navigation() {
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
           <Link href="/" className="flex items-center gap-2 group">
-            <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
-              <span className="text-primary-foreground font-bold text-lg">K</span>
-            </div>
-            <span className="font-bold text-lg text-foreground hidden sm:inline">Kores Fabric</span>
+            <Image src="/header_logo.png" alt="Kores Fabric Logo" width={120} height={32} className="rounded-lg" />
+            {/* <span className="font-bold text-lg text-foreground sm:inline">Kores Fabric</span> */}
           </Link>
 
           {/* Desktop Menu */}

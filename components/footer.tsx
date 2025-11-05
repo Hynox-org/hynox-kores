@@ -1,7 +1,8 @@
 "use client"
 
 import Link from "next/link"
-import { Mail, Phone, MapPin } from "lucide-react"
+import Image from "next/image"
+import { Mail, Phone, MapPin, Facebook, Instagram, Youtube } from "lucide-react"
 
 export default function Footer() {
   return (
@@ -11,10 +12,8 @@ export default function Footer() {
           {/* Brand */}
           <div>
             <div className="flex items-center gap-2 mb-4">
-              <div className="w-8 h-8 bg-primary-foreground rounded-lg flex items-center justify-center">
-                <span className="text-primary font-bold">K</span>
-              </div>
-              <span className="font-bold text-lg">Kores Fabric</span>
+              <Image src="/footer_logo.png" alt="Kores Fabric Logo" width={220} height={120} className="rounded-lg" />
+              {/* <span className="font-bold text-lg">Kores Fabric</span> */}
             </div>
             <p className="text-primary-foreground/80 text-sm">
               Premium wholesale clothing and printing services from Tirupur.
@@ -80,8 +79,8 @@ export default function Footer() {
               </li>
               <li className="flex items-center gap-2">
                 <Phone size={16} />
-                <a href="tel:+919876543210" className="hover:text-primary-foreground/80 transition-colors">
-                  +91 98765 43210
+                <a href="tel:+919500989894" className="hover:text-primary-foreground/80 transition-colors">
+                  +91 95009 89894
                 </a>
               </li>
               <li className="flex items-center gap-2">
@@ -91,6 +90,17 @@ export default function Footer() {
                 </a>
               </li>
             </ul>
+            <div className="flex gap-4 mt-6">
+              <a href="https://www.facebook.com/share/1FqRakTdPU/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer" className="hover:text-primary-foreground/80 transition-colors">
+                <Facebook size={20} />
+              </a>
+              <a href="https://www.instagram.com/koresfabric.in?igsh=ZGRzZTkwazFpOGtz" target="_blank" rel="noopener noreferrer" className="hover:text-primary-foreground/80 transition-colors">
+                <Instagram size={20} />
+              </a>
+              <a href="https://www.youtube.com/@koresfabric" target="_blank" rel="noopener noreferrer" className="hover:text-primary-foreground/80 transition-colors">
+                <Youtube size={20} />
+              </a>
+            </div>
           </div>
         </div>
 
@@ -98,7 +108,7 @@ export default function Footer() {
           <div className="flex flex-col md:flex-row justify-between items-center text-sm text-primary-foreground/80 gap-4">
             <p>&copy; 2025 Kores Fabric. All rights reserved.</p>
             <p>
-              Website developed by <span className="font-semibold text-primary-foreground">HYNOX</span>
+              Developed by <span className="font-semibold text-primary-foreground"><a href="https://www.hynox.in">HYNOX</a></span>
             </p>
             <div className="flex gap-6">
               <a href="#" className="hover:text-primary-foreground transition-colors">

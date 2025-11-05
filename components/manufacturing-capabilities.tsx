@@ -1,8 +1,29 @@
 "use client"
 
 import { Zap, Package, Shirt, Truck } from "lucide-react"
+import React, { useRef, useEffect } from "react"
 
-export default function ManufacturingCapabilities() {
+const ManufacturingCapabilities = () => {
+  const scrollRef = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    const scrollContainer = scrollRef.current
+    if (!scrollContainer) return
+
+    const scrollSpeed = 1 // Adjust scroll speed as needed
+    const scrollInterval = 50 // Milliseconds per scroll step
+
+    const autoScroll = setInterval(() => {
+      if (scrollContainer.scrollLeft + scrollContainer.clientWidth >= scrollContainer.scrollWidth) {
+        scrollContainer.scrollLeft = 0 // Reset to beginning
+      } else {
+        scrollContainer.scrollLeft += scrollSpeed
+      }
+    }, scrollInterval)
+
+    return () => clearInterval(autoScroll)
+  }, [])
+
   const capabilities = [
     {
       icon: Shirt,
@@ -40,21 +61,20 @@ export default function ManufacturingCapabilities() {
           </p>
         </div>
 
-        {/* Capabilities Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+        {/* Capabilities Scroll */}
+        <div className="flex overflow-x-auto gap-6 py-4 scrollbar-hide" ref={scrollRef}>
           {capabilities.map((capability, index) => {
             const Icon = capability.icon
             return (
               <div
                 key={index}
-                className="p-6 bg-background rounded-xl border border-border hover:border-primary hover:shadow-lg transition-all duration-300 animate-scale-in"
+                className="flex-none w-64 p-6 bg-background rounded-xl border border-border hover:border-primary hover:shadow-lg transition-all duration-300 animate-scale-in text-center"
                 style={{ animationDelay: `${index * 0.1}s` }}
               >
-                <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4">
-                  <Icon className="text-primary" size={24} />
+                <div className="w-16 h-16 mx-auto bg-primary/10 rounded-lg flex items-center justify-center mb-4">
+                  <Icon className="text-primary" size={32} />
                 </div>
-                <h3 className="text-xl font-semibold text-foreground mb-2">{capability.title}</h3>
-                <p className="text-muted-foreground text-sm">{capability.description}</p>
+                <h3 className="text-xl font-semibold text-foreground">{capability.title}</h3>
               </div>
             )
           })}
@@ -78,3 +98,5 @@ export default function ManufacturingCapabilities() {
     </section>
   )
 }
+
+export default ManufacturingCapabilities

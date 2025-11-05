@@ -20,16 +20,16 @@ export default function Hero() {
           {/* Left Content */}
           <div className="animate-slide-in-left">
             <div className="inline-block mb-6 px-4 py-2 bg-accent/20 rounded-full border border-accent/50">
-              <span className="text-sm font-semibold text-accent">Premium Wholesale Fabrics</span>
+              <span className="text-sm font-semibold text-accent">Wholesale Clothing & Custom Printing</span>
             </div>
 
             <h1 className="text-5xl md:text-6xl font-bold text-foreground mb-6 leading-tight">
-              Elevate Your <span className="text-primary">Fashion</span> Game
+              Your Partner in <span className="text-primary">Wholesale</span> Apparel
             </h1>
 
             <p className="text-lg text-muted-foreground mb-8 leading-relaxed">
-              Discover premium wholesale clothing and professional printing services from Tirupur. We deliver excellence
-              in every stitch and print.
+              Kores Fabric is your trusted source for premium wholesale clothing and professional custom printing
+              services in Tirupur. We ensure quality and timely delivery for your business needs.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4">
@@ -66,7 +66,7 @@ export default function Hero() {
           </div>
 
           {/* Right Image */}
-          <div className="animate-slide-in-right">
+          <div className="animate-slide-in-right hidden md:block">
             <div className="relative">
               <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-accent/20 rounded-2xl blur-2xl"></div>
               <img

@@ -8,6 +8,7 @@ export interface Product {
   description: string;
   fullDescription: string;
   image: string;
+  thumbnailImages: string[];
   sizes: string[];
   colors: string[];
   specs: ProductSpecs;
@@ -21,6 +22,7 @@ export const productDetails: Record<string, Product> = {
     fullDescription:
       "Our oversized t-shirts are crafted from premium 100% cotton fabric, offering exceptional comfort and durability. The relaxed fit makes them perfect for casual wear, while the quality construction ensures they maintain their shape wash after wash.",
     image: "/oversized-tshirt.png",
+    thumbnailImages: ["/oversized-tshirt.png"],
     sizes: ["XS", "S", "M", "L", "XL", "XXL", "3XL"],
     colors: ["Black", "White", "Navy", "Gray", "Charcoal", "Olive"],
     specs: {
@@ -28,6 +30,7 @@ export const productDetails: Record<string, Product> = {
       Weight: "180 GSM",
       Fit: "Oversized",
       Care: "Machine wash cold, tumble dry low",
+      MOQ: "5",
     },
   },
   "acid-wash-tshirt": {
@@ -37,6 +40,7 @@ export const productDetails: Record<string, Product> = {
     fullDescription:
       "Featuring a unique acid-wash treatment, these t-shirts combine vintage aesthetics with modern comfort. Each piece has a distinctive pattern, making them perfect for brands looking to stand out.",
     image: "/acid-wash-tshirt.jpg",
+    thumbnailImages: ["/acid-wash-tshirt.jpg"],
     sizes: ["XS", "S", "M", "L", "XL", "XXL"],
     colors: ["Black Acid", "Blue Acid", "Purple Acid", "Gray Acid"],
     specs: {
@@ -44,6 +48,7 @@ export const productDetails: Record<string, Product> = {
       Weight: "175 GSM",
       Fit: "Regular",
       Care: "Wash separately, cold water recommended",
+      MOQ: "5",
     },
   },
   "cozy-hoodie": {
@@ -53,6 +58,7 @@ export const productDetails: Record<string, Product> = {
     fullDescription:
       "Our premium hoodies are designed for comfort and style. Made from high-quality fleece, they feature a spacious kangaroo pocket and adjustable drawstrings, perfect for custom embroidery or printing.",
     image: "/cozy-hoodie.png",
+    thumbnailImages: ["/cozy-hoodie.png"],
     sizes: ["XS", "S", "M", "L", "XL", "XXL", "3XL"],
     colors: ["Black", "White", "Navy", "Gray", "Charcoal", "Burgundy"],
     specs: {
@@ -60,6 +66,7 @@ export const productDetails: Record<string, Product> = {
       Weight: "280 GSM",
       Features: "Kangaroo pocket, adjustable drawstrings",
       Care: "Machine wash warm, tumble dry medium",
+      MOQ: "5",
     },
   },
   "cozy-sweatshirt": {
@@ -69,6 +76,7 @@ export const productDetails: Record<string, Product> = {
     fullDescription:
       "A timeless classic, our sweatshirts are perfect for any season. Made from premium fleece material, they offer excellent durability and are ideal for custom branding.",
     image: "/cozy-sweatshirt.png",
+    thumbnailImages: ["/cozy-sweatshirt.png"],
     sizes: ["XS", "S", "M", "L", "XL", "XXL"],
     colors: ["Black", "White", "Navy", "Gray", "Heather Gray"],
     specs: {
@@ -76,6 +84,7 @@ export const productDetails: Record<string, Product> = {
       Weight: "260 GSM",
       Fit: "Regular",
       Care: "Machine wash warm, tumble dry medium",
+      MOQ: "5",
     },
   },
   "oversized-hoodie": {
@@ -85,6 +94,7 @@ export const productDetails: Record<string, Product> = {
     fullDescription:
       "Experience ultimate comfort with our oversized hoodie. The relaxed fit and premium fleece material make it perfect for loungewear or casual outings. Ideal for custom designs and branding.",
     image: "/oversized-hoodie.png",
+    thumbnailImages: ["/oversized-hoodie.png"],
     sizes: ["S", "M", "L", "XL", "XXL", "3XL", "4XL"],
     colors: ["Black", "White", "Navy", "Gray", "Charcoal", "Sage"],
     specs: {
@@ -92,6 +102,7 @@ export const productDetails: Record<string, Product> = {
       Weight: "300 GSM",
       Fit: "Oversized",
       Care: "Machine wash warm, tumble dry low",
+      MOQ: "5",
     },
   },
   "premium-polo-shirt": {
@@ -101,6 +112,7 @@ export const productDetails: Record<string, Product> = {
     fullDescription:
       "Our premium polo shirts combine elegance with comfort. Made from high-quality pique cotton, they are perfect for corporate events, team uniforms, or casual professional wear.",
     image: "/premium-polo-shirt.png",
+    thumbnailImages: ["/premium-polo-shirt.png"],
     sizes: ["XS", "S", "M", "L", "XL", "XXL"],
     colors: ["Black", "White", "Navy", "Red", "Green", "Gray"],
     specs: {
@@ -108,6 +120,7 @@ export const productDetails: Record<string, Product> = {
       Weight: "200 GSM",
       Features: "Collar, button placket",
       Care: "Machine wash warm, tumble dry medium",
+      MOQ: "5",
     },
   },
   "premium-cotton-tshirt": {
@@ -117,6 +130,7 @@ export const productDetails: Record<string, Product> = {
     fullDescription:
       "Experience ultimate comfort with our premium cotton t-shirts. Made from 100% combed cotton, these t-shirts are incredibly soft, breathable, and built to last. Perfect for custom printing, embroidery, or as a staple in any wardrobe.",
     image: "/premium-fabric-clothing-collection.jpg",
+    thumbnailImages: ["/premium-fabric-clothing-collection.jpg"],
     sizes: ["XS", "S", "M", "L", "XL", "XXL", "3XL"],
     colors: ["White", "Black", "Navy", "Heather Grey", "Royal Blue", "Forest Green"],
     specs: {
@@ -124,6 +138,7 @@ export const productDetails: Record<string, Product> = {
       Weight: "180 GSM",
       Fit: "Regular",
       Care: "Machine wash cold, tumble dry low",
+      MOQ: "5",
     },
   },
 }
