@@ -2,14 +2,7 @@
 
 import Link from "next/link"
 import { ChevronRight } from "lucide-react"
-
-interface Product {
-  id: number
-  name: string
-  description: string
-  image: string
-  slug: string
-}
+import { Product } from "@/lib/product-data"
 
 export default function ProductCard({ product, index }: { product: Product; index: number }) {
   return (
@@ -21,7 +14,7 @@ export default function ProductCard({ product, index }: { product: Product; inde
         {/* Mobile-Optimized Image Container - Square Aspect Ratio */}
         <div className="relative overflow-hidden aspect-square sm:aspect-[4/5] md:h-64 lg:h-72 flex-shrink-0">
           <img
-            src={product.image || "/placeholder.svg"}
+            src={product.colors[0]?.image || "/placeholder.svg"}
             alt={product.name}
             className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
           />

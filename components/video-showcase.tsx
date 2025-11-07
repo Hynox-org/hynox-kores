@@ -1,26 +1,38 @@
 "use client"
 
 import { Play } from "lucide-react"
-import React, { useState, useRef, useEffect } from "react"
+import React, { useRef, useEffect, useState } from "react"
 
 const videos = [
   {
     id: 1,
     title: "DTF Printing Process",
-    thumbnail: "/dtf-printing-process.jpg",
-    videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ",
+    videoUrl: "https://rtmqswlnfatawucbokkb.supabase.co/storage/v1/object/public/kores/IMG_4540.MP4",
   },
   {
     id: 2,
     title: "Embroidery Showcase",
-    thumbnail: "/embroidery-on-fabric.jpg",
-    videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ",
+    videoUrl: "https://rtmqswlnfatawucbokkb.supabase.co/storage/v1/object/public/kores/IMG_4542.MP4",
   },
   {
     id: 3,
     title: "Quality Control",
-    thumbnail: "/quality-control-fabric.jpg",
-    videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ",
+    videoUrl: "https://rtmqswlnfatawucbokkb.supabase.co/storage/v1/object/public/kores/IMG_4546.MP4",
+  },
+  {
+    id: 4,
+    title: "Quality Control",
+    videoUrl: "https://rtmqswlnfatawucbokkb.supabase.co/storage/v1/object/public/kores/IMG_4549.MP4",
+  },
+  {
+    id: 5,
+    title: "Quality Control",
+    videoUrl: "https://rtmqswlnfatawucbokkb.supabase.co/storage/v1/object/public/kores/IMG_4532.MP4",
+  },
+  {
+    id: 6,
+    title: "Quality Control",
+    videoUrl: "https://rtmqswlnfatawucbokkb.supabase.co/storage/v1/object/public/kores/IMG_4578.MP4",
   },
 ]
 
@@ -58,29 +70,26 @@ export default function VideoShowcase() {
           </p>
         </div>
 
-        <div className="flex overflow-x-auto gap-6 py-4 scrollbar-hide" ref={scrollRef}>
+        <div className="flex overflow-x-auto gap-6 py-4 scrollbar-hide scrollbar-width-0 [-ms-overflow-style:none]" ref={scrollRef}>
           {videos.map((video, index) => (
             <div
               key={video.id}
-              className="flex-none w-48 group cursor-pointer animate-scale-in"
+              
+              className="flex-none w-48 group animate-scale-in"
               style={{ animationDelay: `${index * 0.1}s` }}
               onClick={() => setSelectedVideo(video.id)}
             >
               <div className="relative overflow-hidden rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300">
-                <img
-                  src={video.thumbnail || "/placeholder.svg"}
-                  alt={video.title}
-                  className="w-full h-72 object-cover group-hover:scale-110 transition-transform duration-300"
+                <video
+                  src={video.videoUrl}
+                  title={video.title}
+                  loop
+                  muted
+                  autoPlay
+                  playsInline
+                  className="w-full h-72 object-cover"
                 />
-                <div className="absolute inset-0 bg-black/40 group-hover:bg-black/50 transition-colors flex items-center justify-center">
-                  <div className="w-14 h-14 bg-accent rounded-full flex items-center justify-center group-hover:scale-110 transition-transform">
-                    <Play size={28} className="text-accent-foreground fill-accent-foreground" />
-                  </div>
-                </div>
               </div>
-              <h3 className="mt-3 text-base font-semibold text-foreground group-hover:text-primary transition-colors">
-                {video.title}
-              </h3>
             </div>
           ))}
         </div>

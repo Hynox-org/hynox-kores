@@ -33,13 +33,13 @@ const colorMap: { [key: string]: string } = {
 export default function ProductDetailsClient({ slug, product }: ProductDetailsClientProps) {
   const [selectedSizes, setSelectedSizes] = useState<string[]>([])
   const [selectedColors, setSelectedColors] = useState<string[]>([])
-  const [selectedImage, setSelectedImage] = useState(product?.image || "/placeholder.svg")
+  const [selectedImage, setSelectedImage] = useState(product?.colors?.[0]?.image || "/placeholder.svg")
 
   useEffect(() => {
-    if (product?.image) {
-      setSelectedImage(product.image);
+    if (product?.colors?.[0]?.image) {
+      setSelectedImage(product.colors[0].image);
     }
-  }, [product?.image]);
+  }, [product?.colors]);
 
   const handleSizeSelection = (size: string) => {
     setSelectedSizes(prev =>
@@ -96,20 +96,20 @@ export default function ProductDetailsClient({ slug, product }: ProductDetailsCl
               
               {/* Thumbnail Images */}
               <div className="flex gap-2 sm:gap-3 overflow-x-auto pb-2 scrollbar-hide touch-pan-x">
-                {product.thumbnailImages.map((img: string, index: number) => (
+                {product.colors.map((colorOption, index: number) => (
                   <div
                     key={index}
                     className={`w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 flex-shrink-0 rounded-md sm:rounded-lg overflow-hidden border-2 cursor-pointer transition-all touch-manipulation ${
-                      selectedImage === img 
-                        ? "border-primary ring-2 ring-primary ring-offset-2 ring-offset-background" 
+                      selectedImage === colorOption.image
+                        ? "border-primary ring-2 ring-primary ring-offset-2 ring-offset-background"
                         : "border-border hover:border-primary active:border-primary"
                     }`}
-                    onClick={() => setSelectedImage(img)}
+                    onClick={() => setSelectedImage(colorOption.image)}
                   >
-                    <img 
-                      src={img} 
-                      alt={`${product.name} thumbnail ${index + 1}`} 
-                      className="w-full h-full object-cover" 
+                    <img
+                      src={colorOption.image}
+                      alt={`${product.name} ${colorOption.name} thumbnail`}
+                      className="w-full h-full object-cover"
                     />
                   </div>
                 ))}
@@ -151,23 +151,23 @@ export default function ProductDetailsClient({ slug, product }: ProductDetailsCl
                 </label>
                 <div className="flex flex-wrap gap-2 sm:gap-3">
                   {product.colors.length > 0 ? (
-                    product.colors.map((color: string) => (
+                    product.colors.map((colorOption) => (
                       <div
-                        key={color}
-                        onClick={() => handleColorSelection(color)}
+                        key={colorOption.name}
+                        onClick={() => handleColorSelection(colorOption.name)}
                         className={`relative w-11 h-11 sm:w-12 sm:h-12 rounded-full border-2 cursor-pointer transition-all flex items-center justify-center touch-manipulation ${
-                          selectedColors.includes(color) 
-                            ? "border-primary ring-2 ring-primary ring-offset-2 ring-offset-background scale-110" 
+                          selectedColors.includes(colorOption.name)
+                            ? "border-primary ring-2 ring-primary ring-offset-2 ring-offset-background scale-110"
                             : "border-border hover:border-primary active:border-primary active:scale-105"
                         }`}
-                        style={{ backgroundColor: colorMap[color] || color }}
-                        title={color}
-                        aria-label={`Select ${color} color`}
+                        style={{ backgroundColor: colorOption.hex }}
+                        title={colorOption.name}
+                        aria-label={`Select ${colorOption.name} color`}
                       >
-                        {selectedColors.includes(color) && (
-                          <Check 
-                            size={20} 
-                            className={`text-white ${colorMap[color] === "#FFFFFF" ? "text-gray-800" : ""}`} 
+                        {selectedColors.includes(colorOption.name) && (
+                          <Check
+                            size={20}
+                            className={`text-white ${colorOption.hex === "#FFFFFF" ? "text-gray-800" : ""}`}
                           />
                         )}
                       </div>
@@ -184,12 +184,22 @@ export default function ProductDetailsClient({ slug, product }: ProductDetailsCl
                   Specifications
                 </h3>
                 <div className="space-y-2 sm:space-y-3">
-                  {Object.entries(product.specs).map(([key, value]) => (
-                    <div key={key} className="flex justify-between text-sm sm:text-base">
-                      <span className="text-muted-foreground">{key}</span>
-                      <span className="font-semibold text-foreground text-right ml-2">{value}</span>
-                    </div>
-                  ))}
+                  <div className="flex justify-between text-sm sm:text-base">
+                    <span className="text-muted-foreground">Material</span>
+                    <span className="font-semibold text-foreground text-right ml-2">{product.material}</span>
+                  </div>
+                  <div className="flex justify-between text-sm sm:text-base">
+                    <span className="text-muted-foreground">Weight</span>
+                    <span className="font-semibold text-foreground text-right ml-2">{product.weight}</span>
+                  </div>
+                  <div className="flex justify-between text-sm sm:text-base">
+                    <span className="text-muted-foreground">Care Instructions</span>
+                    <span className="font-semibold text-foreground text-right ml-2">{product.careInstructions}</span>
+                  </div>
+                  <div className="flex justify-between text-sm sm:text-base">
+                    <span className="text-muted-foreground">MOQ (Minimum Order Quantity)</span>
+                    <span className="font-semibold text-foreground text-right ml-2">{product.moq}</span>
+                  </div>
                 </div>
               </div>
 

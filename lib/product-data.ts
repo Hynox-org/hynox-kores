@@ -1,144 +1,152 @@
-interface ProductSpecs {
-  [key: string]: string;
-}
-
 export interface Product {
+  id: string;
   name: string;
-  price: string;
+  category: string;
   description: string;
-  fullDescription: string;
-  image: string;
-  thumbnailImages: string[];
+  price: number;
+  colors: { name: string; hex: string; image: string; }[];
   sizes: string[];
-  colors: string[];
-  specs: ProductSpecs;
+  material: string;
+  weight: string;
+  careInstructions: string;
+  moq: number; // Added MOQ property
+  slug: string; // Added slug property
 }
 
-export const productDetails: Record<string, Product> = {
-  "oversized-tshirt": {
-    name: "Oversized T-Shirt",
-    price: "Custom Quote",
-    description: "Premium comfort with a modern oversized fit. Perfect for casual wear and custom printing.",
-    fullDescription:
-      "Our oversized t-shirts are crafted from premium 100% cotton fabric, offering exceptional comfort and durability. The relaxed fit makes them perfect for casual wear, while the quality construction ensures they maintain their shape wash after wash.",
-    image: "/oversized-tshirt.png",
-    thumbnailImages: ["/oversized-tshirt.png"],
-    sizes: ["XS", "S", "M", "L", "XL", "XXL", "3XL"],
-    colors: ["Black", "White", "Navy", "Gray", "Charcoal", "Olive"],
-    specs: {
-      Material: "100% Premium Cotton",
-      Weight: "180 GSM",
-      Fit: "Oversized",
-      Care: "Machine wash cold, tumble dry low",
-      MOQ: "5",
-    },
+export const products: Product[] = [
+  {
+    id: '1',
+    name: '240 GSM Oversized T-Shirt',
+    category: '240 GSM Oversized',
+    description: 'Premium 240 GSM oversized t-shirt for ultimate comfort and style.',
+    price: 799,
+    colors: [
+      { name: 'Black', hex: '#000000', image: '/black-oversized.jpg' },
+      { name: 'White', hex: '#FFFFFF', image: '/white-oversized.jpg' },
+      { name: 'Beige', hex: '#F5F5DC', image: '/beige-oversized.jpg' },
+      { name: 'Gray', hex: '#808080', image: '/gray-oversized.jpg' },
+      { name: 'Navy Blue', hex: '#000080', image: '/navy-blue-oversized.jpg' },
+      { name: 'Royal Blue', hex: '#4169E1', image: '/royal-blue-oversized.jpg' },
+      { name: 'Green', hex: '#008000', image: '/green-oversized.jpg' },
+      { name: 'Orange', hex: '#FFA500', image: '/orange-oversized.jpg' },
+      { name: 'Lavender', hex: '#E6E6FA', image: '/lavender-oversized.jpg' },
+      { name: 'Grapes', hex: '#6F2DA8', image: '/grapes-oversized.jpg' },
+    ],
+    sizes: ['S', 'M', 'L', 'XL', 'XXL'],
+    material: '100% Combed Cotton',
+    weight: '240 GSM',
+    careInstructions: 'Machine wash cold, tumble dry low',
+    moq: 5,
+    slug: '240-gsm-oversized-t-shirt',
   },
-  "acid-wash-tshirt": {
-    name: "Acid Wash T-Shirt",
-    price: "Custom Quote",
-    description: "Trendy acid-washed design with vintage appeal. Ideal for fashion-forward collections.",
-    fullDescription:
-      "Featuring a unique acid-wash treatment, these t-shirts combine vintage aesthetics with modern comfort. Each piece has a distinctive pattern, making them perfect for brands looking to stand out.",
-    image: "/acid-wash-tshirt.jpg",
-    thumbnailImages: ["/acid-wash-tshirt.jpg"],
-    sizes: ["XS", "S", "M", "L", "XL", "XXL"],
-    colors: ["Black Acid", "Blue Acid", "Purple Acid", "Gray Acid"],
-    specs: {
-      Material: "100% Cotton with Acid Wash",
-      Weight: "175 GSM",
-      Fit: "Regular",
-      Care: "Wash separately, cold water recommended",
-      MOQ: "5",
-    },
+  {
+    id: '2',
+    name: '180 GSM Half Sleeve T-Shirt',
+    category: '180 GSM Half Sleeve',
+    description: 'Comfortable 180 GSM half sleeve t-shirt, perfect for everyday wear.',
+    price: 599,
+    colors: [
+      { name: 'Black', hex: '#000000', image: '/black-oversized.jpg' },
+      { name: 'White', hex: '#FFFFFF', image: '/white-oversized.jpg' },
+      { name: 'Gray', hex: '#808080', image: '/gray-oversized.jpg' },
+      { name: 'Navy Blue', hex: '#000080', image: '/navy-blue-oversized.jpg' },
+      { name: 'Red', hex: '#FF0000', image: '/oversized-tshirt.png' },
+    ],
+    sizes: ['S', 'M', 'L', 'XL'],
+    material: '100% Cotton',
+    weight: '180 GSM',
+    careInstructions: 'Machine wash cold, do not bleach',
+    moq: 5,
+    slug: '180-gsm-half-sleeve-t-shirt',
   },
-  "cozy-hoodie": {
-    name: "Hoodie",
-    price: "Custom Quote",
-    description: "Cozy and stylish hoodie perfect for branding and custom designs. Premium fabric quality.",
-    fullDescription:
-      "Our premium hoodies are designed for comfort and style. Made from high-quality fleece, they feature a spacious kangaroo pocket and adjustable drawstrings, perfect for custom embroidery or printing.",
-    image: "/cozy-hoodie.png",
-    thumbnailImages: ["/cozy-hoodie.png"],
-    sizes: ["XS", "S", "M", "L", "XL", "XXL", "3XL"],
-    colors: ["Black", "White", "Navy", "Gray", "Charcoal", "Burgundy"],
-    specs: {
-      Material: "80% Cotton, 20% Polyester Fleece",
-      Weight: "280 GSM",
-      Features: "Kangaroo pocket, adjustable drawstrings",
-      Care: "Machine wash warm, tumble dry medium",
-      MOQ: "5",
-    },
+  {
+    id: '3',
+    name: '300 GSM Sweatshirt',
+    category: '300 GSM Sweatshirt',
+    description: 'Warm and cozy 300 GSM sweatshirt for cooler days.',
+    price: 1299,
+    colors: [
+      { name: 'Black', hex: '#000000', image: '/cozy-sweatshirt.png' },
+      { name: 'White', hex: '#FFFFFF', image: '/cozy-sweatshirt.png' },
+      { name: 'Lavender', hex: '#E6E6FA', image: '/purple-sweatshirt.jpg' },
+      { name: 'Navy Blue', hex: '#000080', image: '/cozy-sweatshirt.png' }, 
+    ],
+    sizes: ['S', 'M', 'L', 'XL'],
+    material: '80% Cotton, 20% Polyester',
+    weight: '300 GSM',
+    careInstructions: 'Machine wash cold, gentle cycle',
+    moq: 5,
+    slug: '300-gsm-sweatshirt',
   },
-  "cozy-sweatshirt": {
-    name: "Sweatshirt",
-    price: "Custom Quote",
-    description: "Classic sweatshirt with excellent durability. Great for embroidery and printing.",
-    fullDescription:
-      "A timeless classic, our sweatshirts are perfect for any season. Made from premium fleece material, they offer excellent durability and are ideal for custom branding.",
-    image: "/cozy-sweatshirt.png",
-    thumbnailImages: ["/cozy-sweatshirt.png"],
-    sizes: ["XS", "S", "M", "L", "XL", "XXL"],
-    colors: ["Black", "White", "Navy", "Gray", "Heather Gray"],
-    specs: {
-      Material: "80% Cotton, 20% Polyester",
-      Weight: "260 GSM",
-      Fit: "Regular",
-      Care: "Machine wash warm, tumble dry medium",
-      MOQ: "5",
-    },
+  {
+    id: '4',
+    name: '300 GSM Hoodie',
+    category: '300 GSM Hoodie',
+    description: 'Stylish 300 GSM hoodie with a comfortable fit.',
+    price: 1499,
+    colors: [
+      { name: 'Black', hex: '#000000', image: '/cozy-hoodie.png' },
+      { name: 'White', hex: '#FFFFFF', image: '/cozy-hoodie.png' },
+      { name: 'Lavender', hex: '#E6E6FA', image: '/cozy-hoodie.png' },
+      { name: 'Navy Blue', hex: '#000080', image: '/cozy-hoodie.png' },
+    ],
+    sizes: ['S', 'M', 'L', 'XL', 'XXL'],
+    material: '80% Cotton, 20% Polyester',
+    weight: '300 GSM',
+    careInstructions: 'Machine wash cold, do not iron on print',
+    moq: 5,
+    slug: '300-gsm-hoodie',
   },
-  "oversized-hoodie": {
-    name: "Oversized Hoodie",
-    price: "Custom Quote",
-    description: "Luxurious oversized hoodie for maximum comfort. Premium material and construction.",
-    fullDescription:
-      "Experience ultimate comfort with our oversized hoodie. The relaxed fit and premium fleece material make it perfect for loungewear or casual outings. Ideal for custom designs and branding.",
-    image: "/oversized-hoodie.png",
-    thumbnailImages: ["/oversized-hoodie.png"],
-    sizes: ["S", "M", "L", "XL", "XXL", "3XL", "4XL"],
-    colors: ["Black", "White", "Navy", "Gray", "Charcoal", "Sage"],
-    specs: {
-      Material: "85% Cotton, 15% Polyester Fleece",
-      Weight: "300 GSM",
-      Fit: "Oversized",
-      Care: "Machine wash warm, tumble dry low",
-      MOQ: "5",
-    },
+  {
+    id: '5',
+    name: '400 GSM Oversized Hoodie',
+    category: '400 GSM Hoodie',
+    description: 'Ultra-heavyweight 400 GSM hoodie for maximum warmth and durability.',
+    price: 1899,
+    colors: [
+      { name: 'Black', hex: '#000000', image: '/oversized-hoodie.png' },
+      { name: 'White', hex: '#FFFFFF', image: '/oversized-hoodie.png' },
+      { name: 'Lavender', hex: '#E6E6FA', image: '/oversized-hoodie.png' },
+      { name: 'Navy Blue', hex: '#000080', image: '/oversized-hoodie.png' },
+    ],
+    sizes: ['M', 'L', 'XL', 'XXL'],
+    material: '70% Cotton, 30% Polyester',
+    weight: '400 GSM',
+    careInstructions: 'Machine wash cold, hang dry',
+    moq: 5,
+    slug: '400-gsm-hoodie',
   },
-  "premium-polo-shirt": {
-    name: "Premium Polo",
-    price: "Custom Quote",
-    description: "Elegant polo shirt for professional and casual settings. Perfect for corporate branding.",
-    fullDescription:
-      "Our premium polo shirts combine elegance with comfort. Made from high-quality pique cotton, they are perfect for corporate events, team uniforms, or casual professional wear.",
-    image: "/premium-polo-shirt.png",
-    thumbnailImages: ["/premium-polo-shirt.png"],
-    sizes: ["XS", "S", "M", "L", "XL", "XXL"],
-    colors: ["Black", "White", "Navy", "Red", "Green", "Gray"],
-    specs: {
-      Material: "100% Pique Cotton",
-      Weight: "200 GSM",
-      Features: "Collar, button placket",
-      Care: "Machine wash warm, tumble dry medium",
-      MOQ: "5",
-    },
+  {
+    id: '6',
+    name: '240 GSM Acid Wash Oversized T-Shirt',
+    category: '240 Acid wash oversized',
+    description: 'Unique acid wash oversized t-shirt with a vintage feel.',
+    price: 899,
+    colors: [
+      { name: 'Black Acid Wash', hex: '#36454F', image: '/black-acidwash-oversized.jpg' },
+      { name: 'Gray Acid Wash', hex: '#696969', image: '/acid-wash-tshirt.jpg' },
+      { name: 'Blue Acid Wash', hex: '#4682B4', image: '/acid-wash-tshirt.jpg' },
+      { name: 'Green Acid Wash', hex: '#5F9EA0', image: '/acid-wash-tshirt.jpg' },
+      { name: 'Purple Acid Wash', hex: '#6A5ACD', image: '/acid-wash-tshirt.jpg' },
+      { name: 'Brown Acid Wash', hex: '#A52A2A', image: '/acid-wash-tshirt.jpg' },
+      { name: 'Red Acid Wash', hex: '#B22222', image: '/acid-wash-tshirt.jpg' },
+      { name: 'Yellow Acid Wash', hex: '#DAA520', image: '/acid-wash-tshirt.jpg' },
+      { name: 'Orange Acid Wash', hex: '#FF8C00', image: '/acid-wash-tshirt.jpg' },
+      { name: 'Pink Acid Wash', hex: '#FF69B4', image: '/acid-wash-tshirt.jpg' },
+    ],
+    sizes: ['S', 'M', 'L', 'XL', 'XXL'],
+    material: '100% Cotton',
+    weight: '240 GSM',
+    careInstructions: 'Machine wash cold, wash separately',
+    moq: 5,
+    slug: '240-acid-wash-oversized-t-shirt',
   },
-  "premium-cotton-tshirt": {
-    name: "Premium Cotton T-Shirt",
-    price: "Custom Quote",
-    description: "High-quality, soft, and durable cotton t-shirt. Ideal for everyday wear and custom designs.",
-    fullDescription:
-      "Experience ultimate comfort with our premium cotton t-shirts. Made from 100% combed cotton, these t-shirts are incredibly soft, breathable, and built to last. Perfect for custom printing, embroidery, or as a staple in any wardrobe.",
-    image: "/premium-fabric-clothing-collection.jpg",
-    thumbnailImages: ["/premium-fabric-clothing-collection.jpg"],
-    sizes: ["XS", "S", "M", "L", "XL", "XXL", "3XL"],
-    colors: ["White", "Black", "Navy", "Heather Grey", "Royal Blue", "Forest Green"],
-    specs: {
-      Material: "100% Combed Cotton",
-      Weight: "180 GSM",
-      Fit: "Regular",
-      Care: "Machine wash cold, tumble dry low",
-      MOQ: "5",
-    },
-  },
-}
+];
+
+export const getProductsByCategory = (category: string) => {
+  return products.filter(product => product.category === category);
+};
+
+export const getProductById = (id: string) => {
+  return products.find(product => product.id === id);
+};

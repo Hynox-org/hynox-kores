@@ -1,51 +1,7 @@
 "use client"
 
 import ProductCard from "./product-card"
-
-const featuredProducts = [
-  {
-    id: 1,
-    name: "240 GSM Oversized T-shirt",
-    description: "High-quality 100% cotton t-shirts perfect for printing and embroidery",
-    image: "/oversized-tshirt.png",
-    slug: "premium-cotton-tshirt",
-  },
-  {
-    id: 2,
-    name: "300 GSM SweatShirt",
-    description: "Comfortable fleece-lined hoodies ideal for custom branding",
-    image: "/cozy-hoodie.png",
-    slug: "cozy-hoodie",
-  },
-  {
-    id: 3,
-    name: "180 GSM Half Sleeve T-Shirt",
-    description: "Elegant polo shirts with superior fabric quality",
-    image: "/premium-polo-shirt.png",
-    slug: "premium-polo-shirt",
-  },
-  {
-    id: 4,
-    name: "400 GSM Oversized Hoodie",
-    description: "Trendy oversized hoodies for wholesale bulk orders",
-    image: "/oversized-hoodie.png",
-    slug: "oversized-hoodie",
-  },
-  {
-    id: 5,
-    name: "400 GSM Sweatshirt",
-    description: "Soft and durable sweatshirts for all seasons",
-    image: "/cozy-sweatshirt.png",
-    slug: "cozy-sweatshirt",
-  },
-  {
-    id: 6,
-    name: "240 GSM Acid Wash T-Shirt",
-    description: "Trendy acid wash collection with unique designs",
-    image: "/acid-wash-tshirt.jpg",
-    slug: "acid-wash-tshirt",
-  },
-]
+import { Product, products } from "@/lib/product-data"
 
 export default function FeaturedProducts() {
   return (
@@ -63,7 +19,7 @@ export default function FeaturedProducts() {
 
         {/* Product Grid */}
         <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {featuredProducts.map((product, index) => (
+          {products.slice(0, 6).map((product, index) => (
             <ProductCard key={product.id} product={product} index={index} />
           ))}
         </div>
