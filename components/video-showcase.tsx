@@ -1,7 +1,13 @@
 "use client"
 
 import { Play } from "lucide-react"
-import React, { useRef, useEffect, useState } from "react"
+import React, { useState } from "react"
+import { Swiper, SwiperSlide } from "swiper/react"
+import { Autoplay } from "swiper/modules"
+
+// Import Swiper styles
+import "swiper/css"
+import "swiper/css/autoplay"
 
 const videos = [
   {
@@ -38,25 +44,6 @@ const videos = [
 
 export default function VideoShowcase() {
   const [selectedVideo, setSelectedVideo] = useState<number | null>(null)
-  const scrollRef = useRef<HTMLDivElement>(null)
-
-  useEffect(() => {
-    const scrollContainer = scrollRef.current
-    if (!scrollContainer) return
-
-    const scrollSpeed = 1 // Adjust scroll speed as needed
-    const scrollInterval = 50 // Milliseconds per scroll step
-
-    const autoScroll = setInterval(() => {
-      if (scrollContainer.scrollLeft + scrollContainer.clientWidth >= scrollContainer.scrollWidth) {
-        scrollContainer.scrollLeft = 0 // Reset to beginning
-      } else {
-        scrollContainer.scrollLeft += scrollSpeed
-      }
-    }, scrollInterval)
-
-    return () => clearInterval(autoScroll)
-  }, [])
 
   return (
     <section className="py-20 bg-background">
@@ -70,29 +57,53 @@ export default function VideoShowcase() {
           </p>
         </div>
 
-        <div className="flex overflow-x-auto gap-6 py-4 scrollbar-hide scrollbar-width-0 [-ms-overflow-style:none]" ref={scrollRef}>
+        <Swiper
+          modules={[Autoplay]}
+          spaceBetween={24}
+          slidesPerView={1}
+          loop={true}
+          autoplay={{
+            delay: 2500,
+            disableOnInteraction: false,
+          }}
+          breakpoints={{
+            640: {
+              slidesPerView: 2,
+              spaceBetween: 20,
+            },
+            768: {
+              slidesPerView: 3,
+              spaceBetween: 30,
+            },
+            1024: {
+              slidesPerView: 4,
+              spaceBetween: 40,
+            },
+          }}
+          className="mySwiper"
+        >
           {videos.map((video, index) => (
-            <div
-              key={video.id}
-              
-              className="flex-none w-48 group animate-scale-in"
-              style={{ animationDelay: `${index * 0.1}s` }}
-              onClick={() => setSelectedVideo(video.id)}
-            >
-              <div className="relative overflow-hidden rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300">
-                <video
-                  src={video.videoUrl}
-                  title={video.title}
-                  loop
-                  muted
-                  autoPlay
-                  playsInline
-                  className="w-full h-72 object-cover"
-                />
+            <SwiperSlide key={video.id}>
+              <div
+                className="flex-none w-full group animate-scale-in"
+                style={{ animationDelay: `${index * 0.1}s` }}
+                onClick={() => setSelectedVideo(video.id)}
+              >
+                <div className="relative overflow-hidden rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300">
+                  <video
+                    src={video.videoUrl}
+                    title={video.title}
+                    loop
+                    muted
+                    autoPlay
+                    playsInline
+                    className="w-full h-72 object-cover"
+                  />
+                </div>
               </div>
-            </div>
+            </SwiperSlide>
           ))}
-        </div>
+        </Swiper>
 
         {/* Video Modal */}
         {selectedVideo && (

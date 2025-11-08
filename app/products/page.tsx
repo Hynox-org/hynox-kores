@@ -3,51 +3,7 @@
 import Navigation from "@/components/navigation"
 import Footer from "@/components/footer"
 import ProductCard from "@/components/product-card"
-
-const products = [
-  {
-    id: 1,
-    name: "Oversized T-Shirt",
-    description: "Premium comfort with a modern oversized fit. Perfect for casual wear and custom printing.",
-    image: "/oversized-tshirt.png",
-    slug: "oversized-tshirt",
-  },
-  {
-    id: 2,
-    name: "Acid Wash T-Shirt",
-    description: "Trendy acid-washed design with vintage appeal. Ideal for fashion-forward collections.",
-    image: "/acid-wash-tshirt.jpg",
-    slug: "acid-wash-tshirt",
-  },
-  {
-    id: 3,
-    name: "Hoodie",
-    description: "Cozy and stylish hoodie perfect for branding and custom designs. Premium fabric quality.",
-    image: "/cozy-hoodie.png",
-    slug: "hoodie",
-  },
-  {
-    id: 4,
-    name: "Sweatshirt",
-    description: "Classic sweatshirt with excellent durability. Great for embroidery and printing.",
-    image: "/cozy-sweatshirt.png",
-    slug: "sweatshirt",
-  },
-  {
-    id: 5,
-    name: "Oversized Hoodie",
-    description: "Luxurious oversized hoodie for maximum comfort. Premium material and construction.",
-    image: "/oversized-hoodie.png",
-    slug: "oversized-hoodie",
-  },
-  {
-    id: 6,
-    name: "Premium Polo",
-    description: "Elegant polo shirt for professional and casual settings. Perfect for corporate branding.",
-    image: "/premium-polo-shirt.png",
-    slug: "premium-polo",
-  },
-]
+import { products } from "@/lib/product-data"
 
 export default function ProductsPage() {
   return (
