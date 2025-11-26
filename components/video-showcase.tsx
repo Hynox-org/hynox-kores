@@ -13,32 +13,32 @@ const videos = [
   {
     id: 1,
     title: "DTF Printing Process",
-    videoUrl: "https://rtmqswlnfatawucbokkb.supabase.co/storage/v1/object/public/kores/IMG_4540.MP4",
+    videoUrl: "https://xzzabsxxzfyxqmbaagho.supabase.co/storage/v1/object/public/kores/IMG_4540.MP4",
   },
   {
     id: 2,
     title: "Embroidery Showcase",
-    videoUrl: "https://rtmqswlnfatawucbokkb.supabase.co/storage/v1/object/public/kores/IMG_4542.MP4",
+    videoUrl: "https://xzzabsxxzfyxqmbaagho.supabase.co/storage/v1/object/public/kores/IMG_4542.MP4",
   },
   {
     id: 3,
     title: "Quality Control",
-    videoUrl: "https://rtmqswlnfatawucbokkb.supabase.co/storage/v1/object/public/kores/IMG_4546.MP4",
+    videoUrl: "https://xzzabsxxzfyxqmbaagho.supabase.co/storage/v1/object/public/kores/IMG_4546.MP4",
   },
   {
     id: 4,
     title: "Quality Control",
-    videoUrl: "https://rtmqswlnfatawucbokkb.supabase.co/storage/v1/object/public/kores/IMG_4549.MP4",
+    videoUrl: "https://xzzabsxxzfyxqmbaagho.supabase.co/storage/v1/object/public/kores/IMG_4549.MP4",
   },
   {
     id: 5,
     title: "Quality Control",
-    videoUrl: "https://rtmqswlnfatawucbokkb.supabase.co/storage/v1/object/public/kores/IMG_4532.MP4",
+    videoUrl: "https://xzzabsxxzfyxqmbaagho.supabase.co/storage/v1/object/public/kores/IMG_4532.MP4",
   },
   {
     id: 6,
     title: "Quality Control",
-    videoUrl: "https://rtmqswlnfatawucbokkb.supabase.co/storage/v1/object/public/kores/IMG_4578.MP4",
+    videoUrl: "https://xzzabsxxzfyxqmbaagho.supabase.co/storage/v1/object/public/kores/IMG_4578.MP4",
   },
 ]
 
